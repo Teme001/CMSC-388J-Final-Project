@@ -1,0 +1,55 @@
+#intro2 {
+  background-image: url(../static/campus.jpg);
+  height: 100vh;
+}
+
+/* Height for devices larger than 576px */
+@media (min-width: 992px) {
+  #intro2 {
+    margin-top: -58.59px;
+  }
+}
+.navbar .nav-link {
+  color: #fff !important;
+}
+
+/* Alert CSS */
+.alert {
+    margin: 0px 0px 15px 0px !important;
+    border-radius: 0.35rem;
+    text-align: left;
+
+    animation: fadeOut 0.3s ease-in-out 6s forwards;
+    }
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+}
+
+/* Resgiter section */
+#acc-prompt{
+  margin-top: 20px;
+}
+.logo{
+  margin-right: 15px;
+}
+
+/* Style footer */
+#footer {
+  background-color: #4d4c4c;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+#footer p {
+  font-size: 0.8rem;
+}

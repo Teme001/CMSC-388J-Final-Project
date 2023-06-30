@@ -1,0 +1,89 @@
+{% extends "header.html" %}
+{% block content %}
+
+<main>
+    <section class="index_container">
+
+        <div class="div-progress-container">
+          <div class="progress-container">
+           <div class="progress-bar" id="myBar"></div>
+          </div>
+        </div>
+
+      
+        <div class="content-container">
+            <div class="Connect">
+                <h1>Connect with your fellow terps</h1>
+                <p>Explore videos and pictures by fellow terpians. Make friends and get updates for activities on campus</p>
+            </div>
+        </div>
+              <br>
+              <div class="d-flex flex-row justify-content-between">
+                <div class="card p-1" style="width: 18rem;">
+                    <img class="card-img-top" src="{{url_for('static', filename='testudo.jpg')}}" alt="User connect icon">
+                  <div class="card-body">  
+                  <h3>Connect</h3>
+                    <p>Connect with Terps all around campus!</p>
+                  </div>
+                </div>
+                <div class="card p-1" style="width: 18rem;">
+                    <img class="card-img-top" src="{{url_for('static', filename='explore.jpg')}}" alt="Explore videos and pictures">
+                  <div class="card-body">
+                    <h3>Explore</h3>
+                    <p>Explore posts from your friends and classmates!</p>
+                  </div>
+                </div>
+                <div class="card p-1" style="width: 18rem;">
+                    <img class="card-img-top" src="{{url_for('static', filename='share.jpg')}}" alt="Share icon">
+                  <div class="card-body">
+                    <h3>Share</h3>
+                    <p>Share with the UMD community!</p>
+                  </div>
+                </div>
+            </div>
+          <br>
+            <div class="row justify-content-center">
+              
+                <div class="col-md-auto">
+                    <h2>Join our community</h2>
+                    <p>Join our community.....</p>
+                    <form>
+                        <input type="email"> <input type="submit" value="Sign up">
+                    </form>
+                </div>
+            </div>
+            <div>
+                <h2>About Us</h2>
+                <h5>Project Members</h5>
+              <ul>
+                <li>Jose Valdivia</li>
+                <li>Temesghen Iyasu</li>
+                <li>Benjamin Aharon</li>
+                <li>Conor Cullen-Ising</li>
+              </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Scroll bar Tracker -->
+<script defer>
+		// When the user scrolls the page, execute scrollTracker
+		window.onscroll = function () {
+			scrollTracker()
+		}
+
+		function scrollTracker() {
+      let header = document.querySelector('.div-progress-container');
+      header.classList.toggle('sticky', window.scrollY > 0);
+			var winScroll =
+				document.body.scrollTop ||
+				document.documentElement.scrollTop;
+			var height =
+				document.documentElement.scrollHeight -
+				window.innerHeight;
+      var scrolled = (winScroll / height) * 100;
+			document.getElementById('myBar').style.width = scrolled + '%'
+		}
+</script>
+{% endblock %}

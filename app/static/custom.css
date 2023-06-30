@@ -1,0 +1,250 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set background color */
+body {
+  font-family: 'Poppins', 'Montserrat' !important;
+  font-size: 100%;
+  font-size: 16px;
+  background-color: #ffffff;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  padding-bottom: 80px;
+}
+
+/* Header customizations */
+h1 {
+  font-size: 3rem;
+  margin: 0 0 2rem 0;
+  font-weight: 700;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+
+
+.section-container {
+  width: calc(100% - 80px);
+  margin: 0 auto;
+}
+
+/* Top Navbar */
+header {
+  margin-bottom: 4rem;
+}
+header .section-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#top-nav{
+  margin-top: 3em;
+}
+.div-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  width: 65px;
+  margin-left: 4px;
+  margin-right: 9px;
+}
+.div-logo h1{
+  position: relative;
+  color: #4f4f4f;
+	margin: 0 15px;
+  font-size: 3em;
+	font-weight: 700;
+  text-transform: uppercase;
+	letter-spacing: 10px;
+
+}
+
+/* Style Navbar */
+header nav {
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #ff0000;
+  padding: 1.5rem;
+  align-self: center;
+  z-index: 9999; /* fixed */
+}
+header nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  justify-content: space-around
+}
+
+header nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: #000000;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0 auto;
+}
+ nav i {
+   width: 200px;
+   height: 200px;
+  
+ }
+
+.large-icon {
+  color: #3f6ae9;
+  font-size: 2.5em;
+}
+
+
+/* Style main section */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  margin-bottom: 5em;
+}
+
+main section {
+  margin-bottom: 2rem;
+}
+
+main h2 {
+  font-size: 1.5rem;
+  color: #ff0000;
+  margin-bottom: 1rem;
+}
+
+main p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Style footer */
+footer {
+  background-color: #4d4c4c;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+footer p {
+  font-size: 0.8rem;
+}
+
+.icon {
+  width: 35px;
+  height: auto;
+}
+
+
+
+.register_login {
+  background-color: #fff;
+  /* padding: 2rem; */
+  border-radius: 1rem;
+  /* margin: 5rem auto 0; */
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+.submit-class {
+  background-color: rgba(255, 0, 0, 0.733);
+  color: white;
+  border-color: #ff0505;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 12px 24px;
+  line-height: 1;
+}
+
+
+/* Alert CSS */
+.alert {
+    margin: 0px 0px 15px 0px !important;
+    border-radius: 0.35rem;
+    text-align: left;
+
+    animation: fadeOut 0.3s ease-in-out 6s forwards;
+    }
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+}
+
+/* Scroll Tracker CSS */
+.div-progress-container{
+  display: none;
+  position: fixed;
+  top: 0;
+  left:0;
+  z-index: 1;
+  width: 100%;
+  background-color: #f1f1f1;
+  transition: 0.2s;
+}
+.progress-container {
+  width: 100%;
+  height: 4px;
+  background: #ccc;
+}
+
+.div-progress-container.sticky {
+  display: block;
+  transition: 0.2s;
+}
+.div-progress-container.sticky .progress-bar {
+  height: 4px;
+  background: #dd0808;
+  width: 0%;
+}
+
+/* Nav bar (in progress) */
+
+.box {
+  width: 390px;
+  height: 240px;
+  transform-origin: 0 0;
+  transition: transform 0.4s;
+}
+
+.box.next {
+  transform:
+    translateX(120px)
+    scaleX(calc(240 / 390))  /* scaleX(0.61) */
+    scaleY(calc(180 / 240)); /* scaleY(0.75) */
+}
+
+
+
+
+

@@ -1,0 +1,40 @@
+{% extends 'header.html' %}
+
+{% block content %}
+  <h2>Users</h2>
+  <ul>
+    {% for user in unfollowed %}
+      <li>
+        {% if user.profile_pic and user.profile_pic.filename %}
+      <img src = "{{ url_for('users.fetch_profile_img', filename=user.profile_pic.filename) }}" alt="{{ user.username }}" height="50" width="50">
+    {% else %}
+      <img src = "{{ url_for('users.fetch_profile_img', filename='default.jpg') }}" alt="{{ user.username }}" height="50" width="50">
+    {% endif %}
+        
+        <a href="{{ url_for('social.profile', user_id=user.username) }}"> {{ user.username }} </a>
+        {% if current_user.is_authenticated and current_user.id != user.id %}
+        <div class="d-flex p-2 align-items-baseline">
+          <form action="{{ url_for('social.follow_user', follower_name=current_user.username, following_name=user.username) }}" method="post" style="display:inline;">
+  <button type="submit" class="btn btn-outline-danger btn-sm"> Follow</button>
+</form>
+        </div>
+        {% else %}
+        - You 
+        {% endif %}
+      </li>
+    {% endfor %}
+
+    <h3>Following accounts</h3>
+        {% for user in followed %}
+    <li>
+      {% if user.profile_pic and user.profile_pic.filename %}
+        <img src = "{{ url_for('users.fetch_profile_img', filename=user.profile_pic.filename) }}" alt="{{ user.username }}" height="50" width="50">
+    {% else %}
+      <img src = "{{ url_for('users.fetch_profile_img', filename='default.jpg') }}" alt="{{ user.username }}" height="50" width="50">
+    {% endif %}
+        <a href="{{ url_for('social.profile', user_id=user.username) }}">{{ user.username }} - Following</a>
+    </li>
+
+   {% endfor %}     
+  </ul>
+{% endblock %}

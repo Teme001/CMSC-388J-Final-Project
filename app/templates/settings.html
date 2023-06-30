@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='account.css')}}">
+
+  <!-- Bootstrap Icons  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- MDB -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+    rel="stylesheet"
+  />
+    
+  <!-- MDB -->
+  <script defer
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+  ></script>
+
+  <!-- STYLE CSS for Settings.html -->
+<style>
+
+body{
+  color: #bcd0f7;
+  background: #1A233A;
+}
+.account-settings .user-profile {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.account-settings .user-profile .user-avatar {
+    margin: 0 0 1rem 0;
+}
+.account-settings .user-profile .user-avatar img {
+    width: 120px;
+    height: 120px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+}
+.account-settings .user-profile h6.user-email {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+.account-settings .about {
+    margin: 1rem 0 0 0;
+    font-size: 0.8rem;
+    text-align: center;
+}
+.card {
+    background: #272E48;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 1rem;
+}
+.form-control {
+    border: 1px solid #596280;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: .825rem;
+    background: #1A233A;
+    color: #bcd0f7;
+}
+</style>
+</head>
+
+
+
+
+  
+<body>
+  <div id="div-nav" style="margin-right: 0px; margin-left: 0px; margin-top: 0px;">
+  <!-- Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid justify-content-between">
+      <!-- Left elements -->
+      <div class="d-flex">
+        <!-- Brand -->
+        <a 
+          class="navbar-brand me-2 mb-1 d-flex align-items-center" href="{{url_for('main.index')}}">
+          <img
+            src="{{url_for('static', filename = 'M_logo.png')}}"
+            height="40"
+            alt="MDB Logo"
+            loading="lazy"
+            style="margin-top: 2px;"
+          />
+        </a>
+  
+        <!-- Search form -->
+        <form class="input-group w-auto my-auto d-none d-sm-flex"  action="{{ url_for('users.get_all_users') }}" method="get">
+          <input
+            autocomplete="off"
+            type="search"
+            name="query"
+            class="form-control rounded"
+            placeholder="Search for users"
+            style="min-width: 125px;"
+          />
+          <span class="input-group-text border-0 d-none d-lg-flex"
+            ><i class="fas fa-search"></i
+          ></span>
+        </form>
+      </div>
+      <!-- Left elements -->
+
+      
+      <!-- Center elements -->
+      <ul class="navbar-nav flex-row d-none d-md-flex">
+        <li class="nav-item me-3 me-lg-1 active">
+          <a class="nav-link" href="{{url_for('social.feed')}}">
+            <span><i class="fas fa-home fa-lg"></i></span>
+            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+          </a>
+        </li>
+  
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link" href="#">
+            <span><i class="fas fa-flag fa-lg"></i></span>
+          </a>
+        </li>
+  
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link" href="{{url_for('social.videos')}}">
+            <span><i class="fas fa-video fa-lg"></i></span>
+          </a>
+        </li>
+  
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link" href="{{ url_for('social.marketplace') }}">
+            <span><i class="fas fa-shopping-bag fa-lg"></i></span>
+          </a>
+        </li>
+  
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link" href="{{url_for('users.get_all_users')}}">
+            <span><i class="fas fa-users fa-lg"></i></span>
+            <span class="badge rounded-pill badge-notification bg-danger">2</span>
+          </a>
+        </li>
+      </ul>
+      <!-- Center elements -->
+
+
+      
+      <!-- Right elements -->
+      <ul class="navbar-nav flex-row">
+        
+        <!-- Messages Icon -->
+        <li class="nav-item dropdown me-3 me-lg-1">
+          <a
+            class="nav-link dropdown-toggle hidden-arrow"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fas fa-comments fa-lg"></i>
+  
+            <span class="badge rounded-pill badge-notification bg-danger">6</span>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Messages</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Another news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Notification Icon -->
+        <li class="nav-item dropdown me-3 me-lg-1">
+          <a
+            class="nav-link dropdown-toggle hidden-arrow"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fas fa-bell fa-lg"></i>
+            <span class="badge rounded-pill badge-notification 
+              bg-danger">12
+            </span>
+          </a>
+          
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Some news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Another news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                Something else here</a>
+            </li>
+          </ul>
+        </li>
+
+        
+        <!-- Avatar Icon -->
+        <div class="dropdown" id="div-avatar">
+          <a
+            class="dropdown-toggle d-flex align-items-center hidden-arrow"
+            href="#"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="data:image/png;base64,{{image}}"
+              class="rounded-circle"
+              height="35"
+              alt="Profile image small"
+              loading="lazy"
+            />
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdownMenuAvatar"
+          >
+            <li>
+              <a class="dropdown-item" href="{{ url_for('social.profile', user_id=current_user.get_id()) }}">My profile</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{{url_for('social.settings')}}">Settings</a>
+            </li>
+            <li>
+              <a class="dropdown-item" 
+                href="{{ url_for('users.logout') }}">Logout</a>
+            </li>
+          </ul>
+        </div>
+
+      </ul>
+      <!-- Right elements -->
+      
+    </div>
+  </nav>
+  </div>
+
+    
+  <header>
+    <h1>Account settings</h1>
+  </header>
+  
+<main>
+
+  <div class="container">
+    <div class="row gutters">
+      
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="account-settings">
+              <div class="user-profile">
+                <div class="user-avatar">
+                  <img class = "propic" src = "data:image/png;base64,{{image}}" alt = "profile image">
+                </div>
+                <h5 class="user-name">{{user.username}}</h5>
+                <h6 class="user-email">{{user.email}}</h6>
+              </div>
+              <div class="about">
+                <h5 class="mb-2 text-primary">About</h5>
+                <p>{{current_user.bio}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+        
+        <div class="card h-100">
+
+
+          <form action="{{url_for('social.settings')}}" method="POST" enctype="multipart/form-data">
+            {{ update_account_form.csrf_token }}
+            <div class="card-body">
+              
+              <div class="row gutters">
+  
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <h6 class="mb-3 text-primary">Update Personal Details</h6>
+                </div>
+                
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    {{ update_account_form.username(class="form-control", id="username", placeholder="Enter new username", value=current_user.username)}}
+                    {% if update_account_form.username.errors %}
+                      <div class="alert alert-warning" role="alert">
+                      {% for error in update_account_form.username.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+                
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    {{ update_account_form.email(class="form-control", id="email", placeholder="Enter new email", value=current_user.email) }}
+                    {% if update_account_form.email.errors %}
+                      <div class="alert alert-warning" role="alert">
+                      {% for error in update_account_form.email.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+                
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    {{ update_account_form.password(class="form-control", id="password", placeholder="Enter new password") }}
+                    {% if update_account_form.password.errors %}
+                      <div class="alert alert-warning" role="alert">
+                      {% for error in update_account_form.password.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+                
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="profile_pic">Profile Picture</label>
+                    <div class="input-group mb-3">
+                      {{ update_account_form.profile_pic(type="file", class="form-control", id="profile_pic") }}  
+                    </div>
+                    {% if update_account_form.profile_pic.errors %}
+                      <div class="alert alert-warning" role="alert">
+                      {% for error in update_account_form.profile_pic.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <!-- end row-gutters -->
+              
+              <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <h6 class="mb-3 text-primary">Update Biography</h6>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="bio">About</label>
+                    {{ update_account_form.bio(class="form-control", id="bio", placeholder="Tell me about yourself", value=current_user.bio, rows="6", cols="100") }}
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="text-right">
+                    <button type="reset" id="reset" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" id="submit" class="btn btn-primary">Update</button>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+            <!-- end card-body -->
+          </form>
+          
+
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+
+  <footer>
+    <ul>
+      <li><a href = "#"> Support</a></li>
+      <li><a href = "#"> Contact</a></li>
+    </ul>
+      <p>&copy; 2023 Social media app name. All rights reserved.</p>
+  </footer>
+  <script src = "{{url_for('static', filename = 'custom.js')}}"></script>
+</body>
+</html>

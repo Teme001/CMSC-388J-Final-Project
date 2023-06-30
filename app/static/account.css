@@ -1,0 +1,44 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set background color */
+body {
+  font-family: 'Poppins', 'Montserrat' !important;
+  font-size: 100%;
+  font-size: 16px;
+  background-color: #ffffff;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  padding-bottom: 80px;
+}
+
+
+/* Style footer */
+footer {
+  background-color: #4d4c4c;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+footer p {
+  font-size: 0.8rem;
+}
+.icon {
+  width: 35px;
+  height: auto;
+}
+
+/* Navbar */
+#div-nav{
+  margin: 7px 20px 0px 20px;
+}
+#div-avatar{
+  margin-left: 7px;
+}

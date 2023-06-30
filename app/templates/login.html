@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Login Page</title>
+
+    <!-- Custom CSS for Register.html  -->
+    <link rel="stylesheet" href="../static/login.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="../static/mdb.min.css" />
+    <!-- MDB -->
+    <script defer
+      type="text/javascript" 
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+    ></script>
+</head>
+
+  
+<body>
+
+  <!--Main Navigation-->
+  <header>  
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
+      <div class="container-fluid">
+        <!-- Navbar brand -->
+        <a class="navbar-brand nav-link" href="{{ url_for('main.index') }}">
+          <strong>TerpNet</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+          aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarExample01">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" rel="nofollow"
+                >Some Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Some Link</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav d-flex flex-row">
+            <!-- Icons -->
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="#" rel="nofollow"
+                target="_blank">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="#" rel="nofollow" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="#" rel="nofollow" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="#" rel="nofollow" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+
+    
+    <!-- Background image -->
+    <div id="intro" class="bg-image shadow-2-strong">
+      <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+        <div class="container">
+          <div class="row justify-content-center">
+
+            <div>
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-warning" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+              {% endwith %}
+            </div>
+
+            
+            <div class="col-xl-5 col-md-8">
+              <form method="POST" action ="{{ url_for('users.login')}}" class="bg-white rounded shadow-5-strong p-5">
+                
+                <div class="d-flex align-items-center mb-3 pb-1">
+                  <img class="logo" src = "{{url_for('static', filename = 'M_logo.png')}}" width="30" height="30">
+                  <span class="h1 fw-bold mb-0">Login</span>
+                </div>
+            
+                <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Please login to use the platform</h5>
+
+                 {{form.csrf_token}}
+                <!-- Username input -->
+                <div class="form-outline mb-4">
+                  {{form.username(class="form-control")}}
+                  <label class="form-label" for="username">
+                    Username
+                  </label>
+                  {% if form.username.errors %}
+                    <div class="alert alert-warning" role="alert">
+                    {% for error in form.username.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  {{form.password(class="form-control")}}
+                  <label class="form-label" for="password">
+                    Password
+                  </label>
+                  {% if form.password.errors %}
+                      <div class="alert alert-warning" role="alert">
+                          {% for error in form.password.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                      </div>
+                  {% endif %}
+                </div>
+
+                <!-- 2 column grid layout for inline styling -->
+                <div class="row mb-4">
+                  <div class="col d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="remember" checked />
+                      <label class="form-check-label" for="remember">
+                        Remember me
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="col text-center">
+                    <!-- Simple link -->
+                    <a href="#">Forgot password?</a>
+                  </div>
+                </div>
+
+                <!-- /Submit button -->
+                <button type="submit" class="btn btn-primary btn-block">
+                  Sign in
+                </button>
+
+                <div class = "text-center" id="acc-prompt">
+                  <a href = "{{ url_for('users.register')}}">
+                  Don't have an account?
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Background image -->
+  </header>
+  <!-- /Main Navigation-->
+
+
+
+
+  
+  <!--Footer-->
+  <footer class="bg-light text-lg-start">
+    <div class="py-4 text-center">
+      <a role="button" class="btn btn-primary btn-lg m-2"
+        href="{{ url_for('users.register') }}" rel="nofollow">
+        Sign Up
+      </a>
+      <a role="button" class="btn btn-primary btn-lg m-2" href="{{ url_for('main.index') }}">
+        Menu
+      </a>
+    </div>
+
+    <hr class="m-0" />
+
+    <div class="text-center py-4 align-items-center">
+      <p>Follow TerpNet on social media</p>
+      <a href="#" class="btn btn-primary m-1" role="button"
+        rel="nofollow" target="_blank">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="#" class="btn btn-primary m-1" role="button" rel="nofollow"
+        target="_blank">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="#" class="btn btn-primary m-1" role="button" rel="nofollow"
+        target="_blank">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#" class="btn btn-primary m-1" role="button" rel="nofollow"
+        target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <!-- Copyright -->
+    <div id="footer">
+        <ul>
+          <li style="list-style:none;"><a href = "#"> Support</a></li>
+          <li style="list-style:none;"><a href = "#"> Contact</a></li>
+        </ul>
+        <p>&copy; 2023 Social media app name. All rights reserved.</p>
+    </div>
+    <!-- /Copyright -->
+  </footer>
+  <!-- /Footer-->
+  
+  <!-- MDB -->
+  <script type="text/javascript" src="../static/mdb.min.js"></script>
+
+</body>
+</html> 

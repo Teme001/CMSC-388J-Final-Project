@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.weavy.com/sdk/latest/weavy.bundle.js"></script>
+
+    <title>Chat</title>
+</head>
+<body>
+    <div id="chat">
+        <ul id="messages"></ul>
+        <form id="message-form">
+            <input type="text" id="message" autocomplete="off" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+       $(document).ready(function(){
+    const socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+
+    // Join the room
+    socket.emit('join_room', {room: 'public'});
+
+    // Send a message
+    $('#message-form').submit(function(e){
+        e.preventDefault();
+        const message = $('#message').val();
+        socket.emit('send_message', {room: 'public', message: message});
+        $('#message').val('');
+    });
+
+    // Receive a message
+    socket.on('receive_message', function(data){
+        $('#messages').append('<li>' + data.message + '</li>');
+    });
+});
+
+    </script>
+</body>
+</html>
